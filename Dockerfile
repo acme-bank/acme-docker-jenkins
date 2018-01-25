@@ -5,7 +5,7 @@ ARG MAVEN_VERSION="3.5.2"
 ARG MAVEN_URL="https://www.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
 ARG MAVEN_DIR="apache-maven-${MAVEN_VERSION}"
 ARG DOCKER_COMPOSE_VERSION="1.18.0"
-ARG DOCKER_COMPOSE_URL="https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
+ARG DOCKER_COMPOSE_URL="https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m`"
 
 # Environment variables
 ENV MAVEN_HOME "/opt/maven/default"
