@@ -4,8 +4,7 @@ services:
   - docker
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
-  - DOCKER_IMAGE=acmebank/jenkins:latest
+  - DOCKER_COMPOSE_VERSION=1.18.0
 
 before_install:
   - sudo apt-get update
@@ -15,10 +14,10 @@ before_install:
   - sudo chmod +x /usr/local/bin/docker-compose
 
 script:
-  - docker build -t ${DOCKER_IMAGE} .
+  - docker-compose build
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-      docker push ${DOCKER_IMAGE};
+      docker-compose push;
     fi
