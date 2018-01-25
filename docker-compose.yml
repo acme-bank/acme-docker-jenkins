@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  acme_jenkins:
+    build: .
+    image: acmebank/jenkins:latest
+    ports:
+      - 8080:8080
