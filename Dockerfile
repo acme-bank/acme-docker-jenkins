@@ -34,4 +34,4 @@ RUN curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOS
     chmod +x /usr/local/bin/docker-compose
 
 # Change back to application user
-USER ${user}
+USER jenkins
