@@ -28,6 +28,19 @@ RUN wget --no-cookies --no-check-certificate "${MAVEN_URL}" -O /tmp/maven.tar.gz
     update-alternatives --install "/usr/bin/mvn" "mvn" "/opt/maven/default/bin/mvn" 1 && \
     update-alternatives --set "mvn" "/opt/maven/default/bin/mvn"
 
+# Install Docker
+RUN apt-get update && \
+    apt-get -y install apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common && \
+    curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/docker-key; apt-key add /tmp/docker-key && \
+    add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" && \
+    apt-get update && \
+    apt-get -y install docker-ce
+
 # Install Docker Compose
 RUN curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" \
          -o /usr/local/bin/docker-compose && \
