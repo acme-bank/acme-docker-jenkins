@@ -4,5 +4,6 @@ services:
   acme_jenkins:
     build: .
     image: acmebank/jenkins:latest
+    container_name: acme_jenkins
     ports:
       - 8080:8080
