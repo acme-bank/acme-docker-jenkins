@@ -46,5 +46,8 @@ RUN curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOS
          -o /usr/local/bin/docker-compose && \
     chmod +x /usr/local/bin/docker-compose
 
+# Add jenkins user to docker group
+RUN usermod -a -G docker jenkins
+
 # Change back to application user
 USER jenkins
